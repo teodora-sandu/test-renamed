@@ -20,8 +20,7 @@ jobs:
         with:
           sarif_file: snyk.sarif
       - name: Print sarif
-        id: vars
-        run: cat sarif.test
+        run: cat snyk.sarif
   snyk-iac-block-the-build:
     runs-on: ubuntu-latest
     steps:
