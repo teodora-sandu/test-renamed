@@ -15,7 +15,8 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          file: /github/workspace
+          file: .
+          args: --legacy
       - uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: snyk.sarif
