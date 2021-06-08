@@ -9,11 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Run Snyk to check Kubernetes manifest file for issues
+        continue-on-error: true
+        uses: snyk/actions/iac@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          file: .
       - uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: snyk.sarif
-      - name: Print sarif
-        run: cat snyk.sarif
   snyk-iac-block-the-build:
     runs-on: ubuntu-latest
     steps:
