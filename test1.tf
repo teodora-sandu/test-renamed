@@ -40,6 +40,10 @@ resource "aws_security_group" "allow_all_invalid" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  
+  tags = {
+    Name = "MyVPC"
+  }
 }
 
 resource "aws_security_group" "allow_all_invalid_rule" {
